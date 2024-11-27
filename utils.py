@@ -65,3 +65,42 @@ def assert_data_type(data: dict):
     if not isinstance(data.get("eletronico"), bool):
         raise ValueError("Field 'eletronico' must be a bool")
     
+    
+def save_data(json_db_file_path: str, data):
+    """
+    Saves the provided data to a JSON file.
+
+    This function writes a given list of objects to a specified JSON file.
+    If the file already exists, it will be overwritten with the new data. 
+    The data is serialized into JSON format, with each object being saved 
+    as a valid JSON entry.
+
+    Parameters:
+        json_db_file_path (str): The path to the JSON file where the data should be saved.
+        data (list): A list of dictionaries (or objects) to be saved. Each dictionary should represent
+                     an object with attributes like 'nome', 'valor', 'data_criacao', etc.
+
+    Returns:
+        None: This function does not return any value. It performs the action of saving the data 
+              to the specified file.
+    """
+    with open(json_db_file_path, 'w') as file:
+        json.dump(data, file, default=str, indent=4)
+
+def auto_increment_id(json_db_file_path: str):
+    """
+    Returns the next available ID for a new object by checking the last ID used.
+    If no objects exist, it starts with 1.
+
+    Parameters:
+        json_db_file_path (str): The path to the JSON file containing the data.
+
+    Returns:
+        int: The next available ID.
+    """
+    objects = load_data(json_db_file_path)
+    if objects:
+        last_id = max(obj.get("id") for obj in objects)
+        return last_id + 1
+    else:
+        return 1
