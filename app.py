@@ -4,10 +4,16 @@
 
 from flask import Flask, jsonify, request
 from utils import load_data, assert_data_type, save_data, auto_increment_id
+from flask_cors import CORS
 
 app = Flask(__name__)
 endpoint = '/api/v1'
 DB_FILE_PATH = "db_objects.json"
+CORS(app=app)
+
+
+if __name__ == "__app__":
+    app.run(debug=False)
 
 
 @app.route(f'{endpoint}/list_objects/', methods=['GET'])
@@ -16,7 +22,7 @@ def list_objects():
     return jsonify(objects), 200
 
 
-@app.route(f'{endpoint}/add_object/', methods=['Post'])
+@app.route(f'{endpoint}/add_object/', methods=['POST'])
 def save_object():
     try:
         new_object_data = request.get_json()

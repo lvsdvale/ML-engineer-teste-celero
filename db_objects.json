@@ -5,5 +5,19 @@
         "data_criacao": "2023-11-27T10:00:00",
         "eletronico": false,
         "id": 1
+    },
+    {
+        "nome": "Celular",
+        "valor": 150.75,
+        "data_criacao": "2024-11-27T10:00:00",
+        "eletronico": false,
+        "id": 2
+    },
+    {
+        "nome": "Anything",
+        "valor": 150.75,
+        "data_criacao": "2024-11-27T10:00:00",
+        "eletronico": false,
+        "id": 3
     }
 ]

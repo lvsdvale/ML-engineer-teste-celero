@@ -1,0 +1,7 @@
+runtime: python312
+env: flex  
+entrypoint: gunicorn -b :$PORT app:app
+
+handlers:
+  - url: /.*
+    script: auto
