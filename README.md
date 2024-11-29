@@ -27,9 +27,9 @@ bash setup.sh
 
 ## Rodando Localmente
 
-'''sh
+```sh
     flask run
-'''
+```
 Acesse a aplicação localmente em: http://127.0.0.1:5000.
 
 ## Rotas API
@@ -41,7 +41,8 @@ Acesse a aplicação localmente em: http://127.0.0.1:5000.
 <li>URL: /api/v1/list_objects/
 
 Exemplo de Resposta:
-'''json
+
+```json
 [
   {
     "id": 1,
@@ -58,7 +59,7 @@ Exemplo de Resposta:
     "eletronico": false
   }
 ]
-'''
+```
 
 ### Adicionar objeto
 
@@ -68,14 +69,14 @@ Exemplo de Resposta:
 
 <li> Corpo da requisição json 
 
-'''json
+```json
 {
   "nome": "Celular",
   "valor": 1500.0,
   "data_criacao": "2024-11-27T10:00:00",
   "eletronico": true
 }
-'''
+```
 
 ### Editar objeto
 
@@ -85,15 +86,15 @@ Exemplo de Resposta:
 
 <li> Corpo da requisição json 
 
-'''json
+```json
 {
-  "id": 1
+  "id": 1,
   "nome": "Alterado",
   "valor": 1500.0,
   "data_criacao": "2024-11-27T10:00:00",
   "eletronico": true
 }
-'''
+```
 
 ### Deletar objeto
 
@@ -103,15 +104,15 @@ Exemplo de Resposta:
 
 <li> Corpo da requisição json 
 
-'''json
+```json
 {
   "id": 1
 }
-'''
+```
 
 <li> Exemplo da Resposta:
-'''json
+```json
 {
   "message": "Objeto com ID 1 foi deletado com sucesso."
 }
-'''
+```
