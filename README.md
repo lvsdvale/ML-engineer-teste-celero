@@ -111,6 +111,7 @@ Exemplo de Resposta:
 ```
 
 <li> Exemplo da Resposta:
+
 ```json
 {
   "message": "Objeto com ID 1 foi deletado com sucesso."
