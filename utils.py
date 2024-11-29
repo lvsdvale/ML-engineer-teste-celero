@@ -5,6 +5,7 @@
 import os
 import json
 from datetime import datetime
+import warnings
 
 
 def load_data(json_db_file_path: str):
@@ -51,6 +52,14 @@ def assert_data_type(data: dict):
     Raises:
         ValueError: If any of the fields is in the wrong format.
     """
+    data_valid_input = {"id", "nome", "valor", "data_criacao", "eletronico"}
+
+    if set(data.keys()) != data_valid_input:
+        raise ValueError("data has invalid input")
+
+    if not isinstance(data.get("id"), int):
+        raise ValueError("Field 'id' must be a integer")
+
     if not isinstance(data.get("nome"), str):
         raise ValueError("Field 'Nome' must be a string")
     
@@ -58,7 +67,9 @@ def assert_data_type(data: dict):
         raise ValueError("Field 'valor' must be a float")
     
     try:
-        datetime.fromisoformat(data.get("data_criacao"))
+        created_at = datetime.fromisoformat(data.get("data_criacao"))
+        if created_at > datetime.now():
+            raise ValueError("Field 'data_criacao' cannot be a future date")
     except ValueError:
         raise ValueError("Field 'creation_date' must be of type 'timestamp' (ISO 8601)")
     

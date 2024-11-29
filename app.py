@@ -20,8 +20,8 @@ def list_objects():
 def save_object():
     try:
         new_object_data = request.get_json()
-        assert_data_type(new_object_data)
         new_object_data['id'] = auto_increment_id(DB_FILE_PATH)
+        assert_data_type(new_object_data)
         objects = load_data(DB_FILE_PATH)
         objects.append(new_object_data)
         save_data(DB_FILE_PATH, objects)
@@ -44,7 +44,7 @@ def update_object():
             return jsonify({"error": "ID is required to update an object"}), 400  # noaq: E501
         
         objects = load_data(DB_FILE_PATH)
-
+        assert_data_type(updated_object_data)
         object_to_update = None
         for object in objects:
             if object["id"] == object_id:

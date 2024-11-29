@@ -1,8 +1,8 @@
 [
     {
-        "nome": "Cadeira",
-        "valor": 150.75,
-        "data_criacao": "2024-11-27T10:00:00",
+        "nome": "House",
+        "valor": 180.75,
+        "data_criacao": "2023-11-27T10:00:00",
         "eletronico": false,
         "id": 1
     }
